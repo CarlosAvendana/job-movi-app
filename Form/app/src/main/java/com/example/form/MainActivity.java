@@ -1,7 +1,5 @@
 package com.example.form;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.form.logic.Data;
 
@@ -22,19 +22,19 @@ public class MainActivity extends AppCompatActivity {
         final EditText UserName = (EditText) findViewById(R.id.userName);
         final EditText Password = (EditText) findViewById(R.id.password);
         final TextView createUser = (TextView) findViewById(R.id.createBtn);
-        final TextView forgotPassword =(TextView) findViewById(R.id.forgotPass);
+        final TextView forgotPassword = (TextView) findViewById(R.id.forgotPass);
         // perform click event on the button
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validarUser(UserName.getText().toString(),Password.getText().toString())){
+                if (validarUser(UserName.getText().toString(), Password.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "INICIO VALIDADO", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(MainActivity.this, Formulario.class);
-                    MainActivity.this.startActivity(intent);
+                    //Intent intent = new Intent(MainActivity.this, Formulario.class);
+                    //MainActivity.this.startActivity(intent);
+                    sendToNavigationDrawer();
                     finish();
 
-                }
-                else{
+                } else {
                     Toast.makeText(getApplicationContext(), "DATOS INCORRECTOS", Toast.LENGTH_LONG).show();
                 }
             }
@@ -43,10 +43,10 @@ public class MainActivity extends AppCompatActivity {
         createUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Toast.makeText(getApplicationContext(), "CREATE USER", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(MainActivity.this, CreateUser.class);
-                    MainActivity.this.startActivity(intent);
-                    finish();
+                Toast.makeText(getApplicationContext(), "CREATE USER", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this, CreateUser.class);
+                MainActivity.this.startActivity(intent);
+                finish();
             }
         });
 
@@ -61,10 +61,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    private boolean validarUser(String x, String y){
-        for(int i=0;i<Data.getInstance().usuarios.size();i++)
-            if(x.equals(Data.getInstance().usuarios.get(i).getId()) && y.equals(Data.getInstance().usuarios.get(i).getPassword()))
+
+    private boolean validarUser(String x, String y) {
+        for (int i = 0; i < Data.getInstance().usuarios.size(); i++)
+            if (x.equals(Data.getInstance().usuarios.get(i).getId()) && y.equals(Data.getInstance().usuarios.get(i).getPassword()))
                 return true;
         return false;
     }
+
+    private void sendToNavigationDrawer() {
+        Intent i = new Intent(getBaseContext(), NavDrawerActivy.class);
+        startActivity(i);
+
+    }
+
+
 }
