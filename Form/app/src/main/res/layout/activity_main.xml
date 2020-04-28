@@ -54,7 +54,8 @@
             android:id="@+id/et_password"
             android:hint="Enter Password"
             android:textColor="@android:color/white"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:inputType="textPassword"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -73,17 +74,13 @@
             android:id="@+id/forgotPass"
             android:padding="5dp"/>
     </LinearLayout>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_submit"
-        android:text="Submit"
-        android:textColor="@android:color/white"
+
+    <ImageButton
+        android:layout_width="64dp"
+        android:layout_height="55dp"
+        android:background="@drawable/round_button"
+        android:src="@drawable/ic_arrow_forward"
         android:layout_marginTop="10dp"
-        android:background="@drawable/round_button"/>
-
-    
-
-
+        android:id="@+id/btn_submit"/>
 
 </LinearLayout>

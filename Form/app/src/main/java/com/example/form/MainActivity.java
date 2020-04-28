@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // initiate a button
-        Button loginButton = (Button) findViewById(R.id.btn_submit);
-        final EditText UserName = (EditText) findViewById(R.id.userName);
-        final EditText Password = (EditText) findViewById(R.id.password);
+        ImageButton loginButton = (ImageButton) findViewById(R.id.btn_submit);
+        final EditText UserName = (EditText) findViewById(R.id.et_username);
+        final EditText Password = (EditText) findViewById(R.id.et_password);
         final TextView createUser = (TextView) findViewById(R.id.createBtn);
         final TextView forgotPassword =(TextView) findViewById(R.id.forgotPass);
         // perform click event on the button
