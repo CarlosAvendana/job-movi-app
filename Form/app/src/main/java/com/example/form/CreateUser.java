@@ -19,9 +19,9 @@ public class CreateUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_user);
 
-        final EditText UserName = (EditText) findViewById(R.id.userName);
-        final EditText Password = (EditText) findViewById(R.id.password);
-        final EditText Confirm = (EditText) findViewById(R.id.confirmpass);
+        final EditText UserName = (EditText) findViewById(R.id.et_username);
+        final EditText Password = (EditText) findViewById(R.id.et_password);
+        final EditText Confirm = (EditText) findViewById(R.id.et_confirmpass);
 
         Button confirmButton = (Button) findViewById(R.id.ConfirmBtn);
 
