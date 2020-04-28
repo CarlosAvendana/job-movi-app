@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // initiate a button
-        Button loginButton = (Button) findViewById(R.id.loginBtn);
+        Button loginButton = (Button) findViewById(R.id.btn_submit);
         final EditText UserName = (EditText) findViewById(R.id.userName);
         final EditText Password = (EditText) findViewById(R.id.password);
         final TextView createUser = (TextView) findViewById(R.id.createBtn);
