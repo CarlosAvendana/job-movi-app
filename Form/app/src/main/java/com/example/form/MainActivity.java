@@ -70,10 +70,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendToNavigationDrawer() {
-        Intent i = new Intent(getBaseContext(), NavDrawerActivy.class);
+        Intent i = new Intent(MainActivity.this, NavDrawerActivy.class);
         startActivity(i);
-
     }
-
 
 }
