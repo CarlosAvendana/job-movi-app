@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.form.logic.Data;
@@ -20,11 +21,12 @@ public class ForgotPassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
-        final EditText UserName = (EditText) findViewById(R.id.userName);
-        final EditText Password = (EditText) findViewById(R.id.password);
-        final EditText Confirm = (EditText) findViewById(R.id.confirmpass);
+        final EditText UserName = (EditText) findViewById(R.id.et_username);
+        final EditText Password = (EditText) findViewById(R.id.et_password);
+        final EditText Confirm = (EditText) findViewById(R.id.et_confirmpass);
 
-        Button confirmButton = (Button) findViewById(R.id.ConfirmBtn);
+        ImageButton confirmButton = (ImageButton) findViewById(R.id.ConfirmBtn);
+        ImageButton cancelButton = (ImageButton) findViewById(R.id.CancelBtn);
 
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +47,12 @@ public class ForgotPassword extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "ERROR, USUARIO NO EXISTE", Toast.LENGTH_LONG).show();
                 }
             }
+        });
+
+        cancelButton.setOnClickListener((v)->{
+            Intent intent = new Intent(ForgotPassword.this, MainActivity.class);
+            ForgotPassword.this.startActivity(intent);
+            finish();
         });
     }
 
