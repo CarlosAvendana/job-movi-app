@@ -11,6 +11,7 @@ public class Data implements Serializable {
 
     private Data(){
         usuarios=new ArrayList<>();
+        usuarios.add(new Usuario("admin","admin"));
         mainUser=null;
     }
 
