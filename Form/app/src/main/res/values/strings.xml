@@ -1,15 +1,4 @@
 <resources>
-    <string name="app_name">TableLayoutExample</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="loginForm">Login Form</string>
-    <string name="userName">UserName</string>
-    <string name="password">Password</string>
-    <string name="login">LogIn</string>
-    <string name="createUser">Create User</string>
-    <string name="forgotPassword">Recover Password</string>
-    <string name="confirmpass">Confirm password</string>
-    <string name="confirm">Confirm</string>
+    <string name="app_name">Laboratorio 5</string>
 </resources>
 

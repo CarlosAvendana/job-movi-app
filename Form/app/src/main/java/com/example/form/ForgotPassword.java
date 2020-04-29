@@ -31,16 +31,21 @@ public class ForgotPassword extends AppCompatActivity {
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(userExist(UserName.getText().toString())){
-                    if(Password.getText().toString().equals(Confirm.getText().toString())){
-                        Data.getInstance().usuarios.get(position).setPassword(Password.getText().toString());
-                        Toast.makeText(getApplicationContext(), "PASSWORD CHANGED", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(ForgotPassword.this, MainActivity.class);
-                        ForgotPassword.this.startActivity(intent);
-                        finish();
+                if(userExist(UserName.getText().toString())) {
+                    if (!Password.getText().toString().equals("")){
+                         if (Password.getText().toString().equals(Confirm.getText().toString())) {
+                            Data.getInstance().usuarios.get(position).setPassword(Password.getText().toString());
+                             Toast.makeText(getApplicationContext(), "PASSWORD CHANGED", Toast.LENGTH_LONG).show();
+                             Intent intent = new Intent(ForgotPassword.this, MainActivity.class);
+                            ForgotPassword.this.startActivity(intent);
+                            finish();
+                         }
+                         else {
+                                Toast.makeText(getApplicationContext(), "PASSWORDS NO COINCIDEN", Toast.LENGTH_LONG).show();
+                         }
                     }
                     else{
-                        Toast.makeText(getApplicationContext(), "PASSWORDS NO COINCIDEN", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "PASSWORDS VACIAS", Toast.LENGTH_LONG).show();
                     }
                 }
                 else{
