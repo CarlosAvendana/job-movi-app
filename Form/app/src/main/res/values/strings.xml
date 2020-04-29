@@ -3,7 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="loginForm">Login Form</string>
+    <string name="loginForm">Log - In</string>
     <string name="userName">UserName</string>
     <string name="password">Password</string>
     <string name="login">LogIn</string>
@@ -19,6 +19,9 @@
     <string name="nav_header_desc">Navigation header</string>
 
     <string name="menu_home">Home</string>
+    <string name="menu_lista_formularios">Forms list</string>
+    <string name="menu_salir">Log-Out</string>
+    <string name="title_activity_lista_formularios">Forms Jobs</string>
 
 
 </resources>

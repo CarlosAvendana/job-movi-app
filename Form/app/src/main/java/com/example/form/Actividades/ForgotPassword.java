@@ -1,6 +1,4 @@
-package com.example.form;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.form.Actividades;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.form.R;
 import com.example.form.logic.Data;
-import com.example.form.logic.Usuario;
 
 public class ForgotPassword extends AppCompatActivity {
 

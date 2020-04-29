@@ -1,12 +1,14 @@
-package com.example.form;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.form.Actividades;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.form.R;
 
 import java.util.Calendar;
 

@@ -10,13 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".NavDrawerActivy"
-            android:label="@string/title_activity_nav_drawer_activy"
+            android:name=".Actividades.ListaFormulariosActivity"
+            android:label="@string/title_activity_lista_formularios"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".ForgotPassword" />
-        <activity android:name=".CreateUser" />
-        <activity android:name=".Formulario" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".Actividades.NavDrawerActivy"
+            android:label="@string/title_activity_nav_drawer_activy"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Actividades.ForgotPassword" />
+        <activity android:name=".Actividades.CreateUser" />
+        <activity android:name=".Actividades.Formulario" />
+        <activity android:name=".Actividades.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
