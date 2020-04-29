@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,8 +21,9 @@ public class Formulario extends AppCompatActivity {
         setContentView(R.layout.activity_formulario);
         final EditText fechaFld = (EditText) findViewById(R.id.Fecha);
         final DatePickerDialog[] datePickerDialog = new DatePickerDialog[1];
+        final ImageButton dateBtn = (ImageButton) findViewById(R.id.calendarBtn);
 
-        fechaFld.setOnClickListener(new View.OnClickListener() {
+        dateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Calendar c = Calendar.getInstance();

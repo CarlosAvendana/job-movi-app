@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,31 +21,41 @@ public class CreateUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_user);
 
-        final EditText UserName = (EditText) findViewById(R.id.userName);
-        final EditText Password = (EditText) findViewById(R.id.password);
-        final EditText Confirm = (EditText) findViewById(R.id.confirmpass);
+        final EditText UserName = (EditText) findViewById(R.id.et_username);
+        final EditText Password = (EditText) findViewById(R.id.et_password);
+        final EditText Confirm = (EditText) findViewById(R.id.et_confirmpass);
 
-        Button confirmButton = (Button) findViewById(R.id.ConfirmBtn);
+        ImageButton confirmButton = (ImageButton) findViewById(R.id.ConfirmBtn);
+       ImageButton cancelButton = (ImageButton) findViewById(R.id.CancelBtn);
 
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!userExist(UserName.getText().toString())){
-                    if(Password.getText().toString().equals(Confirm.getText().toString())){
-                        Data.getInstance().usuarios.add(new Usuario(UserName.getText().toString(),Password.getText().toString()));
-                        Toast.makeText(getApplicationContext(), "USUARIO CREADO", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(CreateUser.this, MainActivity.class);
-                        CreateUser.this.startActivity(intent);
-                        finish();
-                    }
-                    else{
-                        Toast.makeText(getApplicationContext(), "PASSWORDS NO COINCIDEN", Toast.LENGTH_LONG).show();
+                    if (!Password.getText().toString().equals("")) {
+                        if (Password.getText().toString().equals(Confirm.getText().toString())) {
+                            Data.getInstance().usuarios.add(new Usuario(UserName.getText().toString(), Password.getText().toString()));
+                            Toast.makeText(getApplicationContext(), "USUARIO CREADO", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(CreateUser.this, MainActivity.class);
+                            CreateUser.this.startActivity(intent);
+                            finish();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "PASSWORDS NO COINCIDEN", Toast.LENGTH_LONG).show();
+                        }
+                    }else{
+                        Toast.makeText(getApplicationContext(), "PASSWORDS VACIAS", Toast.LENGTH_LONG).show();
                     }
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "ERROR, USUARIO EXISTENTE", Toast.LENGTH_LONG).show();
                 }
             }
+        });
+
+        cancelButton.setOnClickListener((v)->{
+            Intent intent = new Intent(CreateUser.this, MainActivity.class);
+            CreateUser.this.startActivity(intent);
+            finish();
         });
 
 
