@@ -21,6 +21,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_lista_formularios">Forms list</string>
     <string name="menu_salir">Log-Out</string>
+    <string name="menu_form">Form</string>
     <string name="title_activity_lista_formularios">Forms Jobs</string>
 
 
