@@ -1,11 +1,16 @@
-package com.example.form.Actividades;
+package com.example.form;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +20,7 @@ import java.util.Calendar;
 
 public class Formulario extends AppCompatActivity {
 
+    TextView filepath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +28,9 @@ public class Formulario extends AppCompatActivity {
         final EditText fechaFld = (EditText) findViewById(R.id.Fecha);
         final DatePickerDialog[] datePickerDialog = new DatePickerDialog[1];
         final ImageButton dateBtn = (ImageButton) findViewById(R.id.calendarBtn);
+        final ImageButton uploadFile = (ImageButton) findViewById(R.id.uploadFileBtn);
+         filepath = (TextView) findViewById(R.id.path);
+
 
         dateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,5 +51,29 @@ public class Formulario extends AppCompatActivity {
                 datePickerDialog[0].show();
             }
         });
+
+        uploadFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent file= new Intent(Intent.ACTION_GET_CONTENT);
+                file.setType("*/*");
+                startActivityForResult(file, 10);
+            }
+        });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 10:
+                if (resultCode == RESULT_OK) {
+                    String path = data.getData().getPath();
+                    String name= path.substring(path.lastIndexOf("/")+1);
+                    filepath.setText(path);
+                }
+                break;
+        }
     }
 }

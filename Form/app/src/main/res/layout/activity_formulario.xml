@@ -136,8 +136,9 @@
 
                                 <Spinner
                                     android:id="@+id/spinner"
-                                    android:layout_width="134dp"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_width="147dp"
+                                    android:layout_height="wrap_content"
+                                    android:entries="@array/coutries" />
                                 <TextView
                                     android:layout_width="99dp"
                                     android:layout_height="wrap_content"
@@ -227,7 +228,8 @@
                     android:id="@+id/positions"
                     android:layout_width="244dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp" />
+                    android:layout_marginLeft="5dp"
+                    android:entries="@array/position"/>
             </LinearLayout>
 
 
@@ -280,10 +282,19 @@
                     android:layout_marginTop="10dp"/>
 
                 <ImageButton
-                    android:id="@+id/imageButton2"
+                    android:id="@+id/uploadFileBtn"
                     android:layout_width="77dp"
                     android:layout_height="56dp"
                     app:srcCompat="@drawable/ic_file_upload" />
+
+                <TextView
+                    android:id="@+id/path"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:paddingLeft="5dp"
+                    android:text="No File uploaded"
+                    android:textSize="15dp" />
             </LinearLayout>
 
         </TableRow>
