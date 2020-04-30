@@ -14,8 +14,8 @@
 
         <item
             android:id="@+id/nav_form"
-            android:icon="@drawable/ic_lista_forms"
-            android:title="@string/menu_lista_formularios" />
+            android:icon="@drawable/ic_form_menu"
+            android:title="@string/menu_form" />
 
         <item
             android:id="@+id/nav_logout"

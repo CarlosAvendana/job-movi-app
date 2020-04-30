@@ -16,6 +16,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.form.Formulario;
 import com.example.form.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -90,7 +91,11 @@ public class NavDrawerActivy extends AppCompatActivity
         } else if (id == R.id.nav_logout) {
             Toast.makeText(getApplicationContext(), "Log-Out", Toast.LENGTH_SHORT).show();
             sentToLogin();
+        } else if (id == R.id.nav_form) {
+            Toast.makeText(getApplicationContext(), "Form", Toast.LENGTH_SHORT).show();
+            sentToForm();
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -106,7 +111,11 @@ public class NavDrawerActivy extends AppCompatActivity
         finish();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
 
+    private void sentToForm() {
+        Intent intent = new Intent(this, Formulario.class);
+        startActivity(intent);
     }
 
 
