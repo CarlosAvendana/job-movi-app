@@ -16,7 +16,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.form.Formulario;
+
 import com.example.form.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -85,15 +85,15 @@ public class NavDrawerActivy extends AppCompatActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_list_forms) {
-            Toast.makeText(getApplicationContext(), "Forms list", Toast.LENGTH_SHORT).show();
-            sentToFormList();
-        } else if (id == R.id.nav_logout) {
-            Toast.makeText(getApplicationContext(), "Log-Out", Toast.LENGTH_SHORT).show();
+        if (id == R.id.nav_logout) {
+            //Toast.makeText(getApplicationContext(), "Forms list", Toast.LENGTH_SHORT).show();
             sentToLogin();
         } else if (id == R.id.nav_form) {
-            Toast.makeText(getApplicationContext(), "Form", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "Log-Out", Toast.LENGTH_SHORT).show();
             sentToForm();
+        } else if (id == R.id.nav_list_forms) {
+            //Toast.makeText(getApplicationContext(), "Form", Toast.LENGTH_SHORT).show();
+            sentToFormList();
         }
 
 
@@ -103,19 +103,21 @@ public class NavDrawerActivy extends AppCompatActivity
     }
 
     private void sentToFormList() {
-        Intent intent = new Intent(this, ListaFormulariosActivity.class);
-        startActivity(intent);
+
+        Intent intent = new Intent(NavDrawerActivy.this, ListaFormulariosActivity.class);
+        NavDrawerActivy.this.startActivity(intent);
     }
 
     private void sentToLogin() {
         finish();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        Intent intent = new Intent(NavDrawerActivy.this, MainActivity.class);
+        NavDrawerActivy.this.startActivity(intent);
     }
 
     private void sentToForm() {
-        Intent intent = new Intent(this, Formulario.class);
-        startActivity(intent);
+
+        Intent intent = new Intent(NavDrawerActivy.this, Formulario.class);
+        NavDrawerActivy.this.startActivity(intent);
     }
 
 

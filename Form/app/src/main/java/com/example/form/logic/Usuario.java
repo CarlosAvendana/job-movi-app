@@ -11,7 +11,7 @@ public class Usuario implements Serializable {
     public Usuario() {
         this.id = "";
         this.password = "";
-        this.rol=0;
+        this.rol = 0;
     }
 
     public Usuario(String id, String password) {

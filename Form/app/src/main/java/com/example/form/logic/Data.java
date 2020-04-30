@@ -9,15 +9,15 @@ public class Data implements Serializable {
     public ArrayList<Usuario> usuarios;
     public Usuario mainUser;
 
-    private Data(){
-        usuarios=new ArrayList<>();
-        usuarios.add(new Usuario("admin","admin"));
-        mainUser=null;
+    private Data() {
+        usuarios = new ArrayList<>();
+        usuarios.add(new Usuario("admin", "admin"));
+        mainUser = null;
     }
 
-    public static Data getInstance(){
-        if(singleton_instance==null)
-            singleton_instance=new Data();
+    public static Data getInstance() {
+        if (singleton_instance == null)
+            singleton_instance = new Data();
         return singleton_instance;
     }
 

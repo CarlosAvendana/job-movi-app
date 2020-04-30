@@ -1,7 +1,4 @@
-package com.example.form;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.form.Actividades;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -12,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.form.R;
@@ -21,6 +19,7 @@ import java.util.Calendar;
 public class Formulario extends AppCompatActivity {
 
     TextView filepath;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +28,7 @@ public class Formulario extends AppCompatActivity {
         final DatePickerDialog[] datePickerDialog = new DatePickerDialog[1];
         final ImageButton dateBtn = (ImageButton) findViewById(R.id.calendarBtn);
         final ImageButton uploadFile = (ImageButton) findViewById(R.id.uploadFileBtn);
-         filepath = (TextView) findViewById(R.id.path);
+        filepath = (TextView) findViewById(R.id.path);
 
 
         dateBtn.setOnClickListener(new View.OnClickListener() {
@@ -42,10 +41,8 @@ public class Formulario extends AppCompatActivity {
                 datePickerDialog[0] = new DatePickerDialog(Formulario.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
-                            public void onDateSet(DatePicker view, int year,
-                                                  int monthOfYear, int dayOfMonth) {
-                                fechaFld.setText(dayOfMonth + "/"
-                                        + (monthOfYear + 1) + "/" + year);
+                            public void onDateSet(DatePicker view, int year,int monthOfYear, int dayOfMonth) {
+                                fechaFld.setText(dayOfMonth + "/"+ (monthOfYear + 1) + "/" + year);
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog[0].show();
@@ -55,7 +52,7 @@ public class Formulario extends AppCompatActivity {
         uploadFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent file= new Intent(Intent.ACTION_GET_CONTENT);
+                Intent file = new Intent(Intent.ACTION_GET_CONTENT);
                 file.setType("*/*");
                 startActivityForResult(file, 10);
             }
@@ -70,7 +67,7 @@ public class Formulario extends AppCompatActivity {
             case 10:
                 if (resultCode == RESULT_OK) {
                     String path = data.getData().getPath();
-                    String name= path.substring(path.lastIndexOf("/")+1);
+                    String name = path.substring(path.lastIndexOf("/") + 1);
                     filepath.setText(path);
                 }
                 break;
