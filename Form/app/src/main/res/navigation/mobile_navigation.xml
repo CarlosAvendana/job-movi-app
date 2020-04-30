@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.form.HomeFragment"
+        android:name="com.example.form.Actividades.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home"/>
 
