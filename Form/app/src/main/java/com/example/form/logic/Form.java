@@ -1,6 +1,8 @@
 package com.example.form.logic;
 
-public class Form {
+import java.io.Serializable;
+
+public class Form implements Serializable {
 
     private String _first_name;
     private String _last_name;

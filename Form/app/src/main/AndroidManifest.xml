@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Actividades.ListaFormAddUdp"
+            android:label="@string/title_activity_lista_form_add_udp"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Actividades.ListaFormulariosActivity"
             android:label="@string/title_activity_lista_formularios"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Actividades.NavDrawerActivy"
             android:label="@string/title_activity_nav_drawer_activy"
