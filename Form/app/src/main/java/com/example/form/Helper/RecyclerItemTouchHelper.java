@@ -7,12 +7,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.form.Adaptador.FormAdapter;
 
 
-/*
 public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
 
     private RecyclerItemTouchHelperListener listener;
@@ -151,4 +150,3 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
     }
 
 }//cierre de la clase
-*/

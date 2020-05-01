@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-/*
+
 public class FormAdapter extends RecyclerView.Adapter<FormAdapter.MyViewHolder> implements Filterable {
     private List<Form> formList;
     private List<Form> formListFiltered;
@@ -38,14 +38,14 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.MyViewHolder> 
 
         return new MyViewHolder(itemView);
     }
-/*
+
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         // basically a render
         final Form _form = formListFiltered.get(position);
-        holder.title1.setText(_form.getCodigo());
-        holder.title2.setText(_form.getNombre());
-        holder.description.setText(_form.getTitulo());
+        holder.title1.setText(_form.get_first_name());
+        holder.title2.setText(_form.get_last_name());
+        holder.description.setText(_form.get_city());
     }
 
     @Override
@@ -123,7 +123,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.MyViewHolder> 
                     List<Form> filteredList = new ArrayList<>();
                     for (Form row : formList) {
                         // filter use two parameters
-                        if (row.getCodigo().toLowerCase().contains(charString.toLowerCase()) || row.getNombre().toLowerCase().contains(charString.toLowerCase())) {
+                        if (row.get_first_name().toLowerCase().contains(charString.toLowerCase()) || row.get_last_name().toLowerCase().contains(charString.toLowerCase())) {
                             filteredList.add(row);
                         }
                     }
@@ -173,4 +173,3 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.MyViewHolder> 
 
 
 }
-*/
