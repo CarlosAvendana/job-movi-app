@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (validarUser(UserName.getText().toString(), Password.getText().toString())) {
-                    Toast.makeText(getApplicationContext(), "INICIO VALIDADO", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), "INICIO VALIDADO", Toast.LENGTH_LONG).show();
                     //Intent intent = new Intent(MainActivity.this, Formulario.class);
                     //MainActivity.this.startActivity(intent);
                     sendToNavigationDrawer();
