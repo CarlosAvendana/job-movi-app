@@ -19,7 +19,7 @@ public class ModelData {
                 "carlos.obando.avendana@gmail.com",
                 "87106583",
                 "Developer",
-                "28/11/1997");
+                "28/11/1997", "+506");
         formList.add(form);
         Form form2 = new Form("Felipe", "Piedra", "Calle sin salida",
                 "Curridabat",
@@ -28,7 +28,7 @@ public class ModelData {
                 "pw.felipe@gmail.com",
                 "849236747",
                 "Developer",
-                "01/12/1996");
+                "01/12/1996", "+506");
         formList.add(form2);
 
     }

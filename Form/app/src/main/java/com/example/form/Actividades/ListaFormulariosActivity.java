@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.form.Adaptador.FormAdapter;
+import com.example.form.Formulario;
 import com.example.form.Helper.RecyclerItemTouchHelper;
 import com.example.form.R;
 import com.example.form.logic.Form;
@@ -88,11 +89,11 @@ public class ListaFormulariosActivity extends AppCompatActivity implements FormA
 
     @Override
     public void onContactSelected(Form form) {
-        Toast.makeText(getApplicationContext(), "Seleccionado", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Selected", Toast.LENGTH_LONG).show();
     }
 
     public void goToAddUpdForm() {
-        Intent intent = new Intent(this, ListaFormAddUdp.class);
+        Intent intent = new Intent(this, Formulario.class);
         intent.putExtra("editable", false);
         startActivity(intent);
     }
@@ -116,9 +117,9 @@ public class ListaFormulariosActivity extends AppCompatActivity implements FormA
             //If is editing a row object
             Form aux = mAdapter.getSwipedItem(viewHolder.getAdapterPosition());
             //send data to Edit Activity
-            Intent intent = new Intent(this, ListaFormAddUdp.class);
+            Intent intent = new Intent(this, Formulario.class);
             intent.putExtra("editable", true);
-            intent.putExtra("carrera", aux);
+            intent.putExtra("Form", aux);
             mAdapter.notifyDataSetChanged(); //restart left swipe view
             startActivity(intent);
         }
@@ -207,17 +208,17 @@ public class ListaFormulariosActivity extends AppCompatActivity implements FormA
                             break;
                         }
                     }
-                    //check if exist
+
                     if (founded) {
-                        Toast.makeText(getApplicationContext(), " editado correctamente", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), " Just edited", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), " no encontrado", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Sorry not founded", Toast.LENGTH_LONG).show();
                     }
                 }
             } else {
-                //found a new Carrera Object
+
                 formList.add(aux);
-                Toast.makeText(getApplicationContext(), " Agregado correctamente", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), " Just added", Toast.LENGTH_LONG).show();
             }
         }
     }

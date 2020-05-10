@@ -106,7 +106,9 @@
                         android:layout_height="wrap_content"
                         android:hint="Street Address"
                         android:textSize="15dp" />
+
                     <EditText
+                        android:id="@+id/streetFld2"
                         android:layout_width="259dp"
                         android:layout_height="wrap_content"
                         android:hint="Street Address Line 2"
@@ -153,16 +155,18 @@
                                 android:orientation="vertical">
 
                                 <Spinner
-                                    android:id="@+id/spinner"
+                                    android:id="@+id/SpinnerCountry"
                                     android:layout_width="147dp"
                                     android:layout_height="wrap_content"
                                     android:entries="@array/coutries" />
+
                                 <TextView
+                                    android:id="@+id/countrylabel"
                                     android:layout_width="99dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
                                     android:text="Country"
-                                    android:textSize="15dp"/>
+                                    android:textSize="15dp" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>

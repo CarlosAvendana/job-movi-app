@@ -16,6 +16,7 @@ public class Form implements Serializable {
     private String _phone_number;
     private String _applying_position;
     private String _startDate;
+    private String _area;
 
     public Form() {
         this._first_name = "";
@@ -30,9 +31,10 @@ public class Form implements Serializable {
         this._phone_number = "";
         this._applying_position = "";
         this._startDate = "";
+        this._area = "";
     }
 
-    public Form(String _first_name, String _last_name, String _street_address, String _street_address2, String _city, String _state_province, String _postal_code, String _country, String _email_address, String _phone_number, String _applying_position, String _startDate) {
+    public Form(String _first_name, String _last_name, String _street_address, String _street_address2, String _city, String _state_province, String _postal_code, String _country, String _email_address, String _phone_number, String _applying_position, String _startDate, String _are) {
         this._first_name = _first_name;
         this._last_name = _last_name;
         this._street_address = _street_address;
@@ -45,6 +47,7 @@ public class Form implements Serializable {
         this._phone_number = _phone_number;
         this._applying_position = _applying_position;
         this._startDate = _startDate;
+        this._area = _are;
     }
 
     public String get_first_name() {
@@ -143,6 +146,14 @@ public class Form implements Serializable {
         this._startDate = _startDate;
     }
 
+    public String get_area() {
+        return _area;
+    }
+
+    public void set_area(String _area) {
+        this._area = _area;
+    }
+
     @Override
     public String toString() {
         return "Form{" +
@@ -158,6 +169,7 @@ public class Form implements Serializable {
                 ", _phone_number='" + _phone_number + '\'' +
                 ", _applying_position='" + _applying_position + '\'' +
                 ", _startDate='" + _startDate + '\'' +
+                ", _area='" + _area + '\'' +
                 '}';
     }
 }
