@@ -24,29 +24,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.MyViewHolder> 
     private FormAdapterListener listener;
     private Form deletedItem;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title1, title2, description;
-        //two layers
-        public RelativeLayout viewForeground, viewBackgroundDelete, viewBackgroundEdit;
-
-        public MyViewHolder(View view) {
-            super(view);
-            title1 = view.findViewById(R.id.titleFirstLbl);
-            title2 = view.findViewById(R.id.titleSecLbl);
-            description = view.findViewById(R.id.descriptionLbl);
-            viewBackgroundDelete = view.findViewById(R.id.view_background_delete);
-            viewBackgroundEdit = view.findViewById(R.id.view_background_edit);
-            viewForeground = view.findViewById(R.id.view_foreground);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // send selected contact in callback
-                    listener.onContactSelected(formListFiltered.get(getAdapterPosition()));
-                }
-            });
-        }
-    }
-
     public FormAdapter(List<Form> formList, FormAdapterListener listener) {
         this.formList = formList;
         this.listener = listener;
@@ -169,6 +146,29 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.MyViewHolder> 
 
     public interface FormAdapterListener {
         void onContactSelected(Form form);
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView title1, title2, description;
+        //two layers
+        public RelativeLayout viewForeground, viewBackgroundDelete, viewBackgroundEdit;
+
+        public MyViewHolder(View view) {
+            super(view);
+            title1 = view.findViewById(R.id.titleFirstLbl);
+            title2 = view.findViewById(R.id.titleSecLbl);
+            description = view.findViewById(R.id.descriptionLbl);
+            viewBackgroundDelete = view.findViewById(R.id.view_background_delete);
+            viewBackgroundEdit = view.findViewById(R.id.view_background_edit);
+            viewForeground = view.findViewById(R.id.view_foreground);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // send selected contact in callback
+                    listener.onContactSelected(formListFiltered.get(getAdapterPosition()));
+                }
+            });
+        }
     }
 
 

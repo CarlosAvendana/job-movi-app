@@ -1,4 +1,4 @@
-package com.example.form;
+package com.example.form.Actividades;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.form.Actividades.ListaFormulariosActivity;
+import com.example.form.R;
 import com.example.form.logic.Form;
 
 import java.util.ArrayList;
@@ -87,8 +88,8 @@ public class Formulario extends AppCompatActivity {
                 datePickerDialog[0] = new DatePickerDialog(Formulario.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
-                            public void onDateSet(DatePicker view, int year,int monthOfYear, int dayOfMonth) {
-                                fechaFld.setText(dayOfMonth + "/"+ (monthOfYear + 1) + "/" + year);
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                fechaFld.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog[0].show();
@@ -167,11 +168,11 @@ public class Formulario extends AppCompatActivity {
         }
     }
 
-    public boolean formValidation(){
-        boolean valid=true;
+    public boolean formValidation() {
+        boolean valid = true;
         for (int i = 0; i < fields.size(); i++) {
-            if(fields.get(i).getText().toString().isEmpty()){
-                valid=false;
+            if (fields.get(i).getText().toString().isEmpty()) {
+                valid = false;
                 fields.get(i).setHintTextColor(Color.RED);
                 fields.get(i).setTextColor(Color.RED);
             } else {

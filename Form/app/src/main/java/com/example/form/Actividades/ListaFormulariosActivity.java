@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.form.Adaptador.FormAdapter;
-import com.example.form.Formulario;
+import com.example.form.Actividades.Formulario;
 import com.example.form.Helper.RecyclerItemTouchHelper;
 import com.example.form.R;
 import com.example.form.logic.Form;
