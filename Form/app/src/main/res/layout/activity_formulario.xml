@@ -171,7 +171,7 @@
                                     android:id="@+id/SpinnerCountry"
                                     android:layout_width="147dp"
                                     android:layout_height="wrap_content"
-                                    android:entries="@array/coutries" />
+                                    />
 
                                 <TextView
                                     android:id="@+id/countrylabel"
@@ -277,7 +277,7 @@
                     android:layout_width="244dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:entries="@array/position" />
+                     />
             </LinearLayout>
 
 
