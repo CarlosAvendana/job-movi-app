@@ -50,7 +50,7 @@ public class ListaFormulariosActivity extends AppCompatActivity implements FormA
 
         mRecyclerView = findViewById(R.id.recycler_FormulariosFld);
         formList = new ArrayList<>();
-        model = new ModelData();
+        model = ModelData.getInstance();
         formList = model.getFormList();
         mAdapter = new FormAdapter(formList, this);
 

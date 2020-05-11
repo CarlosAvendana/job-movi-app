@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -11,13 +12,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.form.Actividades.ListaFormulariosActivity;
 import com.example.form.R;
 import com.example.form.logic.Form;
+import com.example.form.logic.ModelData;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -60,6 +62,7 @@ public class Formulario extends AppCompatActivity {
 
     String positions[]={ "Developer","Human Resources","Technical Support","Project Administrator","Data Base Administrator","Network Technician"};
 
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     ArrayList<EditText> fields = new ArrayList<>();
 
@@ -80,11 +83,11 @@ public class Formulario extends AppCompatActivity {
 
     private boolean editable = true;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario);
-
 
         final DatePickerDialog[] datePickerDialog = new DatePickerDialog[1];
         final ImageButton dateBtn = (ImageButton) findViewById(R.id.calendarBtn);
@@ -176,11 +179,11 @@ public class Formulario extends AppCompatActivity {
                 city.setText(aux.get_city());
                 state.setText(aux.get_state_province());
                 postalCode.setText(aux.get_postal_code());
-                country.setSelection(1); //preguntar a Felipe donde esta el array de paises
+                country.setSelection(1);
                 email.setText(aux.get_email_address());
                 phoneNumber.setText(aux.get_phone_number());
                 areaCode.setText(aux.get_area());
-                position.setSelection(1);//preguntar a Felipe donde esta el array de posiciones
+                position.setSelection(1);
                 filepath.setText("");
                 fechaFld.setText(aux.get_startDate());
                 confirmButton.setOnClickListener(new View.OnClickListener() {
@@ -194,11 +197,18 @@ public class Formulario extends AppCompatActivity {
                 confirmButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        addCarrera();
+                        addFormulario();
                     }
                 });
             }
         }//final if extras
+
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFormulario();
+            }
+        });
 
     }
 
@@ -221,6 +231,7 @@ public class Formulario extends AppCompatActivity {
         for (int i = 0; i < fields.size(); i++) {
             if (fields.get(i).getText().toString().isEmpty()) {
                 valid = false;
+                Toast.makeText(getApplicationContext(), "COMPLETE THIS SHIT ASSHOLE", Toast.LENGTH_LONG).show();
                 fields.get(i).setHintTextColor(Color.RED);
                 fields.get(i).setTextColor(Color.RED);
             } else {
@@ -231,25 +242,41 @@ public class Formulario extends AppCompatActivity {
         return valid;
     }
 
-    public void addCarrera() {
+    public boolean validEmail(){
+        String emailContent = email.getText().toString().trim();
+        boolean valid=true;
+         if(!Patterns.EMAIL_ADDRESS.matcher(emailContent).matches()){
+             valid=false;
+             email.setHintTextColor(Color.RED);
+             email.setTextColor(Color.RED);
+             Toast.makeText(getApplicationContext(), "Incorrect email format dick", Toast.LENGTH_LONG).show();
+         }
+         return valid;
+    }
+
+    public void addFormulario() {
         if (formValidation()) {
-            Form f = new Form(name.getText().toString(),
-                    lastname.getText().toString(),
-                    street1.getText().toString(),
-                    street2.getText().toString(),
-                    city.getText().toString(),
-                    state.getText().toString(),
-                    postalCode.getText().toString(),
-                    country.getSelectedItem().toString(),
-                    email.getText().toString(),
-                    phoneNumber.getText().toString(),
-                    position.getSelectedItem().toString(),
-                    fechaFld.getText().toString(),
-                    areaCode.getText().toString());
-            Intent intent = new Intent(getBaseContext(), ListaFormulariosActivity.class);
-            intent.putExtra("addForm", f);
-            startActivity(intent);
-            finish();
+            if(validEmail()) {
+                Form f = new Form(name.getText().toString(),
+                        lastname.getText().toString(),
+                        street1.getText().toString(),
+                        street2.getText().toString(),
+                        city.getText().toString(),
+                        state.getText().toString(),
+                        postalCode.getText().toString(),
+                        country.getSelectedItem().toString(),
+                        email.getText().toString(),
+                        phoneNumber.getText().toString(),
+                        position.getSelectedItem().toString(),
+                        fechaFld.getText().toString(),
+                        areaCode.getText().toString());
+                ModelData.getInstance().getFormList().add(f);
+                Toast.makeText(getApplicationContext(), "DATOS CORRECTOS", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getBaseContext(), NavDrawerActivy.class);
+                intent.putExtra("addForm", f);
+                startActivity(intent);
+                finish();
+            }
         }
 
     }
@@ -269,7 +296,7 @@ public class Formulario extends AppCompatActivity {
                     position.getSelectedItem().toString(),
                     fechaFld.getText().toString(),
                     areaCode.getText().toString());
-            Intent intent = new Intent(getBaseContext(), ListaFormulariosActivity.class);
+            Intent intent = new Intent(getBaseContext(), NavDrawerActivy.class);
             intent.putExtra("edithForm", f);
             startActivity(intent);
             finish();
