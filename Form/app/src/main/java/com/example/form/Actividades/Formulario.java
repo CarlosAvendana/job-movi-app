@@ -62,8 +62,6 @@ public class Formulario extends AppCompatActivity {
 
     String positions[]={ "Developer","Human Resources","Technical Support","Project Administrator","Data Base Administrator","Network Technician"};
 
-    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-
     ArrayList<EditText> fields = new ArrayList<>();
 
     private EditText name;
@@ -93,6 +91,7 @@ public class Formulario extends AppCompatActivity {
         final ImageButton dateBtn = (ImageButton) findViewById(R.id.calendarBtn);
         final ImageButton uploadFile = (ImageButton) findViewById(R.id.uploadFileBtn);
         final ImageButton confirmButton = (ImageButton) findViewById(R.id.ConfirmBtn);
+        final ImageButton cancelButton = (ImageButton) findViewById(R.id.CancelBtn);
 
         name = (EditText) findViewById(R.id.namefld);
         lastname = (EditText) findViewById(R.id.lastfield);
@@ -155,18 +154,7 @@ public class Formulario extends AppCompatActivity {
                 startActivityForResult(file, 10);
             }
         });
-/*
-        confirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(formValidation()){
-                    Toast.makeText(getApplicationContext(), "DATOS CORRECTOS", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "DATOS INCORRECTOS", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-*/
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             editable = extras.getBoolean("editable");
@@ -207,6 +195,15 @@ public class Formulario extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addFormulario();
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Formulario.this, NavDrawerActivy.class);
+                Formulario.this.startActivity(intent);
+                finish();
             }
         });
 
