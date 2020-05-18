@@ -60,7 +60,7 @@ public class Formulario extends AppCompatActivity {
             "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (U.S.)",
             "Wallis and Futuna Islands", "Western Sahara", "Yemen", "Yugoslavia", "Zambia", "Zimbabwe"};
 
-    String positions[]={ "Developer","Human Resources","Technical Support","Project Administrator","Data Base Administrator","Network Technician"};
+    String positions[] = {"Developer", "Human Resources", "Technical Support", "Project Administrator", "Data Base Administrator", "Network Technician"};
 
     ArrayList<EditText> fields = new ArrayList<>();
 
@@ -124,8 +124,6 @@ public class Formulario extends AppCompatActivity {
         ArrayAdapter<String> spinnerArrayAdapterJobs = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, positions);
         spinnerArrayAdapterJobs.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         position.setAdapter(spinnerArrayAdapterJobs);
-
-
 
 
         dateBtn.setOnClickListener(new View.OnClickListener() {
@@ -239,21 +237,21 @@ public class Formulario extends AppCompatActivity {
         return valid;
     }
 
-    public boolean validEmail(){
+    public boolean validEmail() {
         String emailContent = email.getText().toString().trim();
-        boolean valid=true;
-         if(!Patterns.EMAIL_ADDRESS.matcher(emailContent).matches()){
-             valid=false;
-             email.setHintTextColor(Color.RED);
-             email.setTextColor(Color.RED);
-             Toast.makeText(getApplicationContext(), "Incorrect email format dick", Toast.LENGTH_LONG).show();
-         }
-         return valid;
+        boolean valid = true;
+        if (!Patterns.EMAIL_ADDRESS.matcher(emailContent).matches()) {
+            valid = false;
+            email.setHintTextColor(Color.RED);
+            email.setTextColor(Color.RED);
+            Toast.makeText(getApplicationContext(), "Incorrect email format dick", Toast.LENGTH_LONG).show();
+        }
+        return valid;
     }
 
     public void addFormulario() {
         if (formValidation()) {
-            if(validEmail()) {
+            if (validEmail()) {
                 Form f = new Form(name.getText().toString(),
                         lastname.getText().toString(),
                         street1.getText().toString(),

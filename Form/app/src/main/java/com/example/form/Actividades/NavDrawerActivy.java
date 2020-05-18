@@ -15,7 +15,6 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-
 import com.example.form.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -23,13 +22,37 @@ public class NavDrawerActivy extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
-
+    private boolean admin = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_drawer_activy);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            admin = extras.getBoolean("admin");
+            if (admin) {
+                NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+                navigationView.setNavigationItemSelectedListener(this);
+
+                Menu menu = navigationView.getMenu();
+
+                MenuItem target = menu.findItem(R.id.nav_form);
+
+                target.setVisible(false);
+            }//final if editable
+            else {
+                NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+                navigationView.setNavigationItemSelectedListener(this);
+
+                Menu menu = navigationView.getMenu();
+
+                MenuItem target = menu.findItem(R.id.nav_list_forms);
+                target.setVisible(false);
+            }
+        }//final if extras
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -43,11 +66,12 @@ public class NavDrawerActivy extends AppCompatActivity
         NavigationUI.setupWithNavController(navigationView, navController);
         navigationView.setNavigationItemSelectedListener(this);
         drawer.openDrawer(GravityCompat.START);
+
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.nav_drawer_activy, menu);
         return true;
     }
@@ -61,11 +85,7 @@ public class NavDrawerActivy extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -83,19 +103,13 @@ public class NavDrawerActivy extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.nav_logout) {
-            //Toast.makeText(getApplicationContext(), "Forms list", Toast.LENGTH_SHORT).show();
             sentToLogin();
         } else if (id == R.id.nav_form) {
-            //Toast.makeText(getApplicationContext(), "Log-Out", Toast.LENGTH_SHORT).show();
             sentToForm();
         } else if (id == R.id.nav_list_forms) {
-            //Toast.makeText(getApplicationContext(), "Form", Toast.LENGTH_SHORT).show();
             sentToFormList();
         }
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -109,7 +123,7 @@ public class NavDrawerActivy extends AppCompatActivity
 
     private void sentToLogin() {
         finish();
-        Intent intent = new Intent(NavDrawerActivy.this, MainActivity.class);
+        Intent intent = new Intent(NavDrawerActivy.this, Login.class);
         NavDrawerActivy.this.startActivity(intent);
     }
 

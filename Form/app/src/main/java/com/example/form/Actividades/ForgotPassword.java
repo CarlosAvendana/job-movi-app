@@ -36,7 +36,7 @@ public class ForgotPassword extends AppCompatActivity {
                         if (Password.getText().toString().equals(Confirm.getText().toString())) {
                             Data.getInstance().usuarios.get(position).setPassword(Password.getText().toString());
                             Toast.makeText(getApplicationContext(), "PASSWORD CHANGED", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(ForgotPassword.this, MainActivity.class);
+                            Intent intent = new Intent(ForgotPassword.this, Login.class);
                             ForgotPassword.this.startActivity(intent);
                             finish();
                         } else {
@@ -52,7 +52,7 @@ public class ForgotPassword extends AppCompatActivity {
         });
 
         cancelButton.setOnClickListener((v) -> {
-            Intent intent = new Intent(ForgotPassword.this, MainActivity.class);
+            Intent intent = new Intent(ForgotPassword.this, Login.class);
             ForgotPassword.this.startActivity(intent);
             finish();
         });

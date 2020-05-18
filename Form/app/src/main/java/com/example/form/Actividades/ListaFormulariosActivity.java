@@ -21,7 +21,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.form.Adaptador.FormAdapter;
-import com.example.form.Actividades.Formulario;
 import com.example.form.Helper.RecyclerItemTouchHelper;
 import com.example.form.R;
 import com.example.form.logic.Form;
@@ -102,25 +101,18 @@ public class ListaFormulariosActivity extends AppCompatActivity implements FormA
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
         if (direction == ItemTouchHelper.START) {
             if (viewHolder instanceof FormAdapter.MyViewHolder) {
-                // get the removed item name to display it in snack bar
                 String name = formList.get(viewHolder.getAdapterPosition()).get_first_name();
-
-                // save the index deleted
                 final int deletedIndex = viewHolder.getAdapterPosition();
-                // remove the item from recyclerView
                 mAdapter.removeItem(viewHolder.getAdapterPosition());
-
                 Toast.makeText(getApplicationContext(), name + " removido!", Toast.LENGTH_LONG).show();
-
             }
         } else {
-            //If is editing a row object
+
             Form aux = mAdapter.getSwipedItem(viewHolder.getAdapterPosition());
-            //send data to Edit Activity
             Intent intent = new Intent(this, Formulario.class);
             intent.putExtra("editable", true);
             intent.putExtra("Form", aux);
-            mAdapter.notifyDataSetChanged(); //restart left swipe view
+            mAdapter.notifyDataSetChanged();
             startActivity(intent);
         }
     }
@@ -130,13 +122,13 @@ public class ListaFormulariosActivity extends AppCompatActivity implements FormA
         mAdapter.onItemMove(source, target);
     }
 
-    //------------
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds carreraList to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.menu_search, menu);
 
-        // Associate searchable configuration with the SearchView   !IMPORTANT
+
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         searchView = (SearchView) menu.findItem(R.id.action_search)
                 .getActionView();
@@ -144,18 +136,17 @@ public class ListaFormulariosActivity extends AppCompatActivity implements FormA
                 .getSearchableInfo(getComponentName()));
         searchView.setMaxWidth(Integer.MAX_VALUE);
 
-        // listening to search query text change, every type on input
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                // filter recycler view when query submitted
+
                 mAdapter.getFilter().filter(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String query) {
-                // filter recycler view when text is changed
+
                 mAdapter.getFilter().filter(query);
                 return false;
             }
@@ -165,16 +156,10 @@ public class ListaFormulariosActivity extends AppCompatActivity implements FormA
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_search) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

@@ -35,7 +35,7 @@ public class CreateUser extends AppCompatActivity {
                         if (Password.getText().toString().equals(Confirm.getText().toString())) {
                             Data.getInstance().usuarios.add(new Usuario(UserName.getText().toString(), Password.getText().toString()));
                             Toast.makeText(getApplicationContext(), "USUARIO CREADO", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(CreateUser.this, MainActivity.class);
+                            Intent intent = new Intent(CreateUser.this, Login.class);
                             CreateUser.this.startActivity(intent);
                             finish();
                         } else {
@@ -51,7 +51,7 @@ public class CreateUser extends AppCompatActivity {
         });
 
         cancelButton.setOnClickListener((v) -> {
-            Intent intent = new Intent(CreateUser.this, MainActivity.class);
+            Intent intent = new Intent(CreateUser.this, Login.class);
             CreateUser.this.startActivity(intent);
             finish();
         });

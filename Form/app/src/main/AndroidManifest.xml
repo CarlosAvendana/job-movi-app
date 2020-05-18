@@ -20,7 +20,7 @@
         <activity android:name=".Actividades.ForgotPassword" />
         <activity android:name=".Actividades.CreateUser" />
         <activity android:name=".Actividades.Formulario" />
-        <activity android:name=".Actividades.MainActivity">
+        <activity android:name=".Actividades.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

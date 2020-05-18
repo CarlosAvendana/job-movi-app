@@ -13,25 +13,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.form.R;
 import com.example.form.logic.Data;
 
-public class MainActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // initiate a button
         ImageButton loginButton = (ImageButton) findViewById(R.id.btn_submit);
         final EditText UserName = (EditText) findViewById(R.id.et_username);
         final EditText Password = (EditText) findViewById(R.id.et_password);
         final TextView createUser = (TextView) findViewById(R.id.createBtn);
         final TextView forgotPassword = (TextView) findViewById(R.id.forgotPass);
-        // perform click event on the button
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (validarUser(UserName.getText().toString(), Password.getText().toString())) {
-                    sendToNavigationDrawer();
+                    sendToNavigationDrawer(UserName.getText().toString(), Password.getText().toString());
                     finish();
-
                 } else {
                     Toast.makeText(getApplicationContext(), "DATOS INCORRECTOS", Toast.LENGTH_LONG).show();
                 }
@@ -42,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "CREATE USER", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(MainActivity.this, CreateUser.class);
-                MainActivity.this.startActivity(intent);
+                Intent intent = new Intent(Login.this, CreateUser.class);
+                Login.this.startActivity(intent);
                 finish();
             }
         });
@@ -52,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Forgot Password", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(MainActivity.this, ForgotPassword.class);
-                MainActivity.this.startActivity(intent);
+                Intent intent = new Intent(Login.this, ForgotPassword.class);
+                Login.this.startActivity(intent);
                 finish();
             }
         });
@@ -67,9 +65,15 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-    private void sendToNavigationDrawer() {
-        Intent i = new Intent(MainActivity.this, NavDrawerActivy.class);
+    private void sendToNavigationDrawer(String nombre, String pass) {
+        boolean isAdmin = false;
+        Intent i = new Intent(Login.this, NavDrawerActivy.class);
+        if (nombre.equals("admin") && pass.equals("admin")) {
+            isAdmin = true;
+        }
+        i.putExtra("admin", isAdmin);
         startActivity(i);
     }
 
-}
+
+}//Cierre del login

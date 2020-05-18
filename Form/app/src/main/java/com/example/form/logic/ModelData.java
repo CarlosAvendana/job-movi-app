@@ -4,14 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ModelData implements Serializable {
-    private ArrayList<Form> formList;
     private static ModelData singleton_instance = null;
+    private ArrayList<Form> formList;
 
 
     private ModelData() {
         formList = new ArrayList<>();
         prepareFormData();
     }
+
     public static ModelData getInstance() {
         if (singleton_instance == null)
             singleton_instance = new ModelData();
