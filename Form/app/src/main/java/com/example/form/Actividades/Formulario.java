@@ -81,6 +81,15 @@ public class Formulario extends AppCompatActivity {
 
     private boolean editable = true;
 
+    int retornaPos(String nombre) {
+        int valor = 0;
+        for (int i = 0; i < countries.length; i++) {
+            if (countries[i].equals(nombre)) {
+                valor = i;
+            }
+        }
+        return valor;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,11 +174,11 @@ public class Formulario extends AppCompatActivity {
                 city.setText(aux.get_city());
                 state.setText(aux.get_state_province());
                 postalCode.setText(aux.get_postal_code());
-                country.setSelection(1);
+                country.setSelection(retornaPos(aux.get_country()));
                 email.setText(aux.get_email_address());
                 phoneNumber.setText(aux.get_phone_number());
                 areaCode.setText(aux.get_area());
-                position.setSelection(1);
+                position.setSelection(retornaPos(aux.get_applying_position()));
                 filepath.setText("");
                 fechaFld.setText(aux.get_startDate());
                 confirmButton.setOnClickListener(new View.OnClickListener() {
@@ -226,7 +235,7 @@ public class Formulario extends AppCompatActivity {
         for (int i = 0; i < fields.size(); i++) {
             if (fields.get(i).getText().toString().isEmpty()) {
                 valid = false;
-                Toast.makeText(getApplicationContext(), "COMPLETE THIS SHIT ASSHOLE", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Incomplete", Toast.LENGTH_LONG).show();
                 fields.get(i).setHintTextColor(Color.RED);
                 fields.get(i).setTextColor(Color.RED);
             } else {
